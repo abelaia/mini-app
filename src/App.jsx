@@ -10,26 +10,10 @@ import { useReminders } from './hooks/useReminders';
 import './assets/styles/global.scss';
 
 const tabItems = [
-    { 
-        id: 'today', 
-        icon: <img src="/icons/today.svg" alt="today" width={20} height={20} />, 
-        label: 'Сегодня',
-    },
-    { 
-        id: 'schedule',
-        icon: <img src="/icons/calendar.svg" alt="calendar" width={20} height={20} />, 
-        label: 'Расписание',
-    },
-    { 
-        id: 'reminders', 
-        icon: <img src="/icons/bell.svg" alt="bell" width={20} height={20} />,
-        label: 'Уведомления',
-    },
-    { 
-        id: 'info', 
-        icon: <img src="/icons/information.svg" alt="info" width={20} height={20} />,
-        label: 'О паблике',
-    },
+    { id: 'today', icon: <img src="/icons/today.svg" alt="today" width={20} height={20} />, label: 'Сегодня' },
+    { id: 'schedule', icon: <img src="/icons/calendar.svg" alt="calendar" width={20} height={20} />, label: 'Расписание' },
+    { id: 'reminders', icon: <img src="/icons/bell.svg" alt="bell" width={20} height={20} />, label: 'Уведомления' },
+    { id: 'info', icon: <img src="/icons/information.svg" alt="info" width={20} height={20} />, label: 'О паблике' },
 ];
 
 export const App = () => {
@@ -38,20 +22,11 @@ export const App = () => {
 
     const renderTabContent = () => {
         switch (activeTab) {
-            case 'today':
-                return <TodayTab onRemind={addReminder} />;
-            case 'schedule':
-                return <ScheduleTab onRemind={addReminder} />;
-            case 'reminders':
-                return <RemindersTab 
-                    reminders={reminders}
-                    onRemoveReminder={removeReminder}
-                    onClearAll={clearAllReminders}
-                />;
-            case 'info':
-                return <InfoTab />;
-            default:
-                return <TodayTab onRemind={addReminder} />;
+            case 'today': return <TodayTab onRemind={addReminder} />;
+            case 'schedule': return <ScheduleTab onRemind={addReminder} />;
+            case 'reminders': return <RemindersTab reminders={reminders} onRemoveReminder={removeReminder} onClearAll={clearAllReminders} />;
+            case 'info': return <InfoTab />;
+            default: return <TodayTab onRemind={addReminder} />;
         }
     };
 

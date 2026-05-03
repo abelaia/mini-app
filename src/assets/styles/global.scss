@@ -8,7 +8,7 @@
 
 body {
     font-family: $font-family-primary;
-    background: $bg-body;
+    background: var(--vkui--color_background_content);
     color: $color-text-primary;
     padding-bottom: 70px;
     
@@ -20,6 +20,7 @@ body {
 .content {
     max-width: 100%;
     overflow-x: hidden;
+    padding: 0 16px;
     
     @include mobile {
         padding: 0 $space-12;
@@ -53,4 +54,10 @@ body {
     flex: 1;
     margin-bottom: 0;
     padding-bottom: 0;
+}
+
+:root {
+    --vkui--color_background_content: #fef9ef;
+    --vkui--color_background_secondary: #fef9ef;
+    --vkui--color_background_modal: #ffffff;
 }
