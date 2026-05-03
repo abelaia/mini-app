@@ -1,0 +1,107 @@
+@import '../../assets/styles/vars';
+
+.reminders-tab {
+    &__card {
+        background: var(--vkui--color_background_modal);
+        border-radius: 20px;
+        box-shadow: var(--vkui--elevation_1);
+        border: 1px solid $color-gold-light;
+    }
+    
+    &__title {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 20px;
+        color: var(--vkui--color_text_primary);
+    }
+    
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+    
+    &__item {
+        background: rgba($color-gold, 0.05);
+        border-radius: 16px;
+        padding: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        border: 1px solid rgba($color-gold, 0.15);
+    }
+    
+    &__info {
+        flex: 1;
+    }
+    
+    &__name {
+        font-weight: 500;
+        margin-bottom: 6px;
+        color: var(--vkui--color_text_primary);
+        font-size: 15px;
+    }
+    
+    &__time {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 12px;
+        color: var(--vkui--color_text_secondary);
+    }
+    
+    &__button {
+        --vkui--color_background_secondary: transparent;
+        --vkui--color_text_secondary: $color-gold;
+        --vkui--color_border_secondary: $color-gold;
+        --vkui--color_background_secondary_hover: rgba($color-gold, 0.1);
+        border-radius: 24px;
+    }
+    
+    &__button-clear {
+        --vkui--color_background_secondary: transparent;
+        --vkui--color_text_secondary: $color-gold;
+        --vkui--color_border_secondary: $color-gold;
+        --vkui--color_background_secondary_hover: rgba($color-gold, 0.1);
+        border-radius: 24px;
+        display: block;
+        margin: 8px auto 0;
+        width: fit-content;
+    }
+    
+    &__empty {
+        text-align: center;
+        padding: 40px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        color: var(--vkui--color_text_secondary);
+    }
+    
+    &__empty-hint {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 12px;
+        color: var(--vkui--color_text_secondary);
+        margin-top: 8px;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .reminders-tab {
+        &__card {
+            border-color: rgba($color-gold, 0.3);
+        }
+        
+        &__item {
+            background: rgba($color-gold, 0.08);
+            border-color: rgba($color-gold, 0.2);
+        }
+    }
+}

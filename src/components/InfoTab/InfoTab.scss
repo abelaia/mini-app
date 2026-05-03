@@ -1,0 +1,95 @@
+@import '../../assets/styles/vars';
+
+.info-tab {
+    &__card {
+        background: var(--vkui--color_background_modal);
+        border-radius: 20px;
+        box-shadow: var(--vkui--elevation_1);
+        border: 1px solid $color-gold-light;
+    }
+    
+    &__logo {
+        font-size: 48px;
+        margin-bottom: 8px;
+        display: flex;
+        justify-content: center;
+    }
+    
+    &__title {
+        text-align: center;
+        margin-bottom: 4px;
+        color: var(--vkui--color_text_primary);
+    }
+    
+    &__desc {
+        text-align: center;
+        margin-bottom: 20px;
+        color: var(--vkui--color_text_secondary);
+    }
+    
+    &__links {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+    
+    &__link {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: rgba($color-gold, 0.05);
+        padding: 16px;
+        border-radius: 16px;
+        text-decoration: none;
+        color: var(--vkui--color_text_primary);
+        font-weight: 500;
+        transition: background 0.2s ease;
+        border: 1px solid rgba($color-gold, 0.15);
+        
+        &:hover {
+            background: rgba($color-gold, 0.1);
+        }
+    }
+    
+    &__link-icon {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+    }
+    
+    &__link-arrow {
+        margin-left: auto;
+        opacity: 0.5;
+    }
+    
+    &__footer {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding-top: 16px;
+        border-top: 1px dashed $color-gold-light;
+        color: var(--vkui--color_text_secondary);
+    }
+    
+    &__mail {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .info-tab {
+        &__card {
+            border-color: rgba($color-gold, 0.3);
+        }
+        
+        &__link {
+            background: rgba($color-gold, 0.08);
+            border-color: rgba($color-gold, 0.2);
+        }
+    }
+}

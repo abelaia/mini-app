@@ -1,0 +1,146 @@
+@import '../../assets/styles/vars';
+
+.schedule-tab {
+    &__card {
+        background: var(--vkui--color_background_modal);
+        border-radius: 20px;
+        box-shadow: var(--vkui--elevation_1);
+        border: 1px solid $color-gold-light;
+    }
+    
+    &__title {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 20px;
+        color: var(--vkui--color_text_primary);
+    }
+    
+    &__list {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    &__item {
+        display: flex;
+        padding: 16px 0;
+        border-bottom: 1px dashed $color-gold-light;
+        gap: 12px;
+        
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+    
+    &__day {
+        font-weight: 700;
+        min-width: 100px;
+        color: $color-burgundy;
+        font-size: 14px;
+        padding-top: 2px;
+    }
+    
+    &__details {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    &__series-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+    }
+    
+    &__series-info {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        flex: 1;
+    }
+    
+    &__series-name {
+        font-weight: 500;
+        color: var(--vkui--color_text_primary);
+    }
+    
+    &__series {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        color: var(--vkui--color_text_primary);
+        font-size: 14px;
+        
+        &--second {
+            margin-top: 4px;
+            padding-top: 8px;
+            border-top: 1px dashed $color-gold-light;
+        }
+    }
+    
+    &__translator {
+        color: $color-gold;
+        font-size: 12px;
+    }
+    
+    &__emoji {
+        font-size: 16px;
+    }
+    
+    &__button {
+        --vkui--color_background_secondary: transparent;
+        --vkui--color_text_secondary: $color-gold;
+        --vkui--color_border_secondary: $color-gold;
+        --vkui--color_background_secondary_hover: rgba($color-gold, 0.1);
+        
+        border-radius: 24px;
+        flex-shrink: 0;
+    }
+    
+    &__note {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        margin-top: 20px;
+        padding-top: 16px;
+        border-top: 1px dashed $color-gold-light;
+    }
+
+    &__note-line {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--vkui--color_text_secondary);
+        font-size: 12px;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .schedule-tab {
+        &__card {
+            border-color: rgba($color-gold, 0.3);
+        }
+        
+        &__item {
+            border-bottom-color: rgba($color-gold, 0.2);
+        }
+        
+        &__series--second {
+            border-top-color: rgba($color-gold, 0.2);
+        }
+        
+        &__day {
+            color: rgba($color-gold, 0.8);
+        }
+        
+        &__note {
+            border-top-color: rgba($color-gold, 0.2);
+        }
+    }
+}

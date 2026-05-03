@@ -1,0 +1,76 @@
+@import '../../assets/styles/vars';
+
+.header {
+    background: $color-burgundy;
+    padding: $space-20 $space-16 $space-16;
+    color: $color-white;
+    box-shadow: $shadow-header;
+    position: sticky;
+    top: 0;
+    z-index: $z-sticky;
+    
+    @include mobile {
+        padding: $space-16 $space-12 $space-12;
+    }
+    
+    &__top {
+        display: flex;
+        align-items: center;
+        gap: $space-12;
+        
+        @include mobile {
+            gap: $space-8;
+        }
+    }
+    
+    &__logo {
+        width: 45px;
+        height: 45px;
+        background: $color-gold;
+        border-radius: $radius-logo;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 26px;
+        box-shadow: $shadow-header;
+        
+        @include mobile {
+            width: 36px;
+            height: 36px;
+        }
+    }
+
+    &__logo-icon {
+        width: 45px;
+        height: 45px;
+        border-radius: $radius-logo;
+        
+        @include mobile {
+            width: 36px;
+            height: 36px;
+        }
+    }
+    
+    &__title {
+        h1 {
+            font-size: $font-size-22;
+            font-weight: $font-weight-600;
+            color: $color-white;
+            
+            @include mobile {
+                font-size: $font-size-18;
+            }
+        }
+        
+        p {
+            font-size: $font-size-11;
+            opacity: 0.8;
+            color: $color-white;
+            
+            @include mobile {
+                font-size: $font-size-10;
+                font-size: 10px;
+            }
+        }
+    }
+}

@@ -1,0 +1,56 @@
+@import './vars';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-family-primary;
+    background: $bg-body;
+    color: $color-text-primary;
+    padding-bottom: 70px;
+    
+    @include mobile {
+        font-size: 14px;
+    }
+}
+
+.content {
+    max-width: 100%;
+    overflow-x: hidden;
+    
+    @include mobile {
+        padding: 0 $space-12;
+    }
+}
+
+.custom-tabbar {
+    background: $color-cream !important;
+    border-top: 1px solid rgba($color-gold, 0.2);
+    
+    .vkuiTabbarItem {
+        color: $color-text-secondary !important;
+        
+        &__label {
+            font-size: 11px !important;
+            font-weight: 500 !important;
+            margin-top: 2px !important;
+        }
+        
+        &--selected {
+            color: $color-burgundy !important;
+        }
+        
+        &::before {
+            background: rgba($color-burgundy, 0.1) !important;
+        }
+    }
+}
+
+.content-group {
+    flex: 1;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
