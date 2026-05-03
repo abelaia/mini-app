@@ -78,7 +78,7 @@ export const App = () => {
                             key={item.id}
                             selected={activeTab === item.id}
                             onClick={() => setActiveTab(item.id)}
-                            text={item.label}
+                            aria-label={item.label}
                         >
                             {item.icon}
                         </TabbarItem>

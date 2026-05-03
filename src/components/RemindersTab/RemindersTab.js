@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Button, Group, Div, Title, Text, Caption } from '@vkontakte/vkui';
+import { Card, Button, Group, Box, Title, Text, Caption } from '@vkontakte/vkui';
 import './RemindersTab.scss';
 
 export const RemindersTab = ({ reminders, onRemoveReminder, onClearAll }) => {
@@ -7,14 +7,14 @@ export const RemindersTab = ({ reminders, onRemoveReminder, onClearAll }) => {
         return (
             <Group className="reminders-tab">
                 <Card mode="shadow" className="reminders-tab__card">
-                    <Div className="reminders-tab__empty">
+                    <Box className="reminders-tab__empty">
                         <img src="/icons/bell-off.svg" alt="no reminders" width={48} height={48} />
                         <Text>У вас нет активных напоминаний</Text>
                         <div className="reminders-tab__empty-hint">
                             <img src="/icons/bell.svg" alt="bell" width={14} height={14} />
                             <span>Нажмите на колокольчик на вкладке "Сегодня" или "Расписание"</span>
                         </div>
-                    </Div>
+                    </Box>
                 </Card>
             </Group>
         );
@@ -23,7 +23,7 @@ export const RemindersTab = ({ reminders, onRemoveReminder, onClearAll }) => {
     return (
         <Group className="reminders-tab">
             <Card mode="shadow" className="reminders-tab__card">
-                <Div>
+                <Box className='reminders-tab__box'>
                     <div className="reminders-tab__title">
                         <img src="/icons/bell.svg" alt="reminders" width={18} height={18} />
                         <Title level="3" weight="2">Ваши активные напоминания</Title>
@@ -60,7 +60,7 @@ export const RemindersTab = ({ reminders, onRemoveReminder, onClearAll }) => {
                     >
                         Отключить все
                     </Button>
-                </Div>
+                </Box>
             </Card>
         </Group>
     );

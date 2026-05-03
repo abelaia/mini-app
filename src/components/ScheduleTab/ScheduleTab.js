@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Button, Group, Div, Title } from '@vkontakte/vkui';
+import { Card, Button, Group, Box, Title } from '@vkontakte/vkui';
 import { scheduleData, weekDaysOrder, dayNamesRu } from '../../store/scheduleData';
 import './ScheduleTab.scss';
 
@@ -49,7 +49,7 @@ export const ScheduleTab = ({ onRemind }) => {
     return (
         <Group className="schedule-tab">
             <Card mode="shadow" className="schedule-tab__card">
-                <Div>
+                <Box className="schedule-tab__box" >
                     <div className="schedule-tab__title">
                         <img src="/icons/calendar.svg" alt="schedule" width={20} height={20} />
                         <Title level="3" weight="2">Расписание на неделю</Title>
@@ -69,7 +69,7 @@ export const ScheduleTab = ({ onRemind }) => {
                             <span>Московское время</span>
                         </div>
                     </div>
-                </Div>
+                </Box>
             </Card>
         </Group>
     );

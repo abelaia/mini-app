@@ -4,11 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "dev": "vite",
     "start": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "tunnel": "vk-tunnel --http-protocol=http --host=localhost --port=5173",
+    "tunnel": "vk-tunnel --insecure=1 --port=5173 --proto=http",
     "deploy": "vite build && vk-miniapps-deploy"
   },
   "dependencies": {

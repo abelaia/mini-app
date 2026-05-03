@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Button, Group, Div, Title, Caption } from '@vkontakte/vkui';
+import { Card, Button, Group, Box, Title, Caption } from '@vkontakte/vkui';
 import { scheduleData, weekDaysOrder, dayNamesRu } from '../../store/scheduleData';
 import './TodayTab.scss';
 
@@ -15,17 +15,17 @@ export const TodayTab = ({ onRemind }) => {
         if (!series) {
             return (
                 <Card key={dayName} mode="shadow" className="today-tab__card">
-                    <Div className="today-tab__empty">
+                    <Box className="today-tab__empty">
                         <img src="/icons/flower.svg" alt="no series" width={24} height={24} />
                         <span>Нет сериала</span>
-                    </Div>
+                    </Box>
                 </Card>
             );
         }
         
         return (
             <Card key={dayName} mode="shadow" className="today-tab__card">
-                <Div>
+                <Box className="today-tab__box">
                     <Caption level="1" weight="2" caps className="today-tab__badge">
                         {dayName}
                     </Caption>
@@ -70,7 +70,7 @@ export const TodayTab = ({ onRemind }) => {
                             Напомнить
                         </Button>
                     </div>
-                </Div>
+                </Box>
             </Card>
         );
     };

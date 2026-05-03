@@ -16,6 +16,10 @@
             box-shadow: var(--vkui--elevation_2);
         }
     }
+
+    &__box {
+        padding: 16px;
+    }
     
     &__badge {
         font-size: 11px;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Group, Div, Title, Text, Caption } from '@vkontakte/vkui';
+import { Card, Group, Box, Title, Text, Caption } from '@vkontakte/vkui';
 import './InfoTab.scss';
 
 export const InfoTab = () => {
@@ -29,7 +29,7 @@ export const InfoTab = () => {
     return (
         <Group className="info-tab">
             <Card mode="shadow" className="info-tab__card">
-                <Div>
+                <Box className="info-tab__box" >
                     <div className="info-tab__logo">📺</div>
                     <Title level="2" weight="3" className="info-tab__title">TürkDiziOnline</Title>
                     <Text className="info-tab__desc">Турецкие сериалы с онлайн-переводом</Text>
@@ -57,7 +57,7 @@ export const InfoTab = () => {
                             <Caption level="2" weight="1">По вопросам рекламы — в личку группы.</Caption>
                         </div>
                     </div>
-                </Div>
+                </Box>
             </Card>
         </Group>
     );
