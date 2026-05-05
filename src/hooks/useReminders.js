@@ -19,7 +19,19 @@ export const useReminders = () => {
         setReminders(newReminders);
     }, []);
 
+    const isReminderExists = useCallback((seriesName, eventType, eventTime) => {
+        return reminders.some(reminder => 
+            reminder.seriesName === `${seriesName} (${eventType})` ||
+            (reminder.seriesName.includes(seriesName) && reminder.eventType === eventType)
+        );
+    }, [reminders]);
+
     const addReminder = useCallback((seriesName, eventType, eventTime) => {
+        if (isReminderExists(seriesName, eventType, eventTime)) {
+            showToast(`Напоминание о "${seriesName}" (${eventType}) уже добавлено!`);
+            return null;
+        }
+
         const now = new Date();
         const targetDate = new Date();
         
@@ -47,7 +59,7 @@ export const useReminders = () => {
         showToast(`🔔 Напоминание о "${seriesName}" (${eventType}) установлено!`);
         
         return newReminder;
-    }, [reminders, saveReminders]);
+    }, [reminders, saveReminders, isReminderExists]);
 
     const removeReminder = useCallback((id) => {
         const updated = reminders.filter(r => r.id !== id);

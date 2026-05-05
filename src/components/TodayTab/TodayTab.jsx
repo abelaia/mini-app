@@ -3,13 +3,20 @@ import { Card, Button, Group, Box, Title, Caption } from '@vkontakte/vkui';
 import { scheduleData, weekDaysOrder, dayNamesRu } from '../../store/scheduleData';
 import './TodayTab.scss';
 
-export const TodayTab = ({ onRemind }) => {
+export const TodayTab = ({ onRemind, checkReminderExists }) => {
     const now = new Date();
     const todayKey = weekDaysOrder[now.getDay() === 0 ? 6 : now.getDay() - 1];
     const tomorrowKey = weekDaysOrder[(now.getDay() === 0 ? 6 : now.getDay() - 1) + 1] || weekDaysOrder[0];
     
     const today = scheduleData[todayKey];
     const tomorrow = scheduleData[tomorrowKey];
+
+    const handleRemind = (seriesName, eventType, eventTime) => {
+        if (checkReminderExists && checkReminderExists(seriesName, eventType, eventTime)) {
+            return;
+        }
+        onRemind(seriesName, eventType, eventTime);
+    };
     
     const renderSeriesCard = (series, dayName) => {
         if (!series) {
@@ -48,7 +55,7 @@ export const TodayTab = ({ onRemind }) => {
                             size="s"
                             mode="secondary"
                             before={<img src="/icons/bell.svg" alt="remind" width={14} height={14} />}
-                            onClick={() => onRemind(series.name, 'повтор', '20:00')}
+                            onClick={() => handleRemind(series.name, 'повтор', '20:00')}
                             className="today-tab__button"
                         >
                             Напомнить
@@ -64,7 +71,7 @@ export const TodayTab = ({ onRemind }) => {
                             size="s"
                             mode="secondary"
                             before={<img src="/icons/bell.svg" alt="remind" width={14} height={14} />}
-                            onClick={() => onRemind(series.name, 'новая серия', '21:00')}
+                            onClick={() => handleRemind(series.name, 'новая серия', '21:00')}
                             className="today-tab__button"
                         >
                             Напомнить

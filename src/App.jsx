@@ -19,11 +19,18 @@ const tabItems = [
 export const App = () => {
     const [activeTab, setActiveTab] = useState('today');
     const { reminders, addReminder, removeReminder, clearAllReminders } = useReminders();
+    
+    const checkReminderExists = (seriesName, eventType, eventTime) => {
+        return reminders.some(reminder => 
+            reminder.seriesName === `${seriesName} (${eventType})` ||
+            (reminder.seriesName.includes(seriesName) && reminder.eventType === eventType)
+        );
+    };
 
     const renderTabContent = () => {
         switch (activeTab) {
-            case 'today': return <TodayTab onRemind={addReminder} />;
-            case 'schedule': return <ScheduleTab onRemind={addReminder} />;
+            case 'today': return <TodayTab onRemind={addReminder} checkReminderExists={checkReminderExists} />;
+            case 'schedule': return <ScheduleTab onRemind={addReminder} checkReminderExists={checkReminderExists} />;
             case 'reminders': return <RemindersTab reminders={reminders} onRemoveReminder={removeReminder} onClearAll={clearAllReminders} />;
             case 'info': return <InfoTab />;
             default: return <TodayTab onRemind={addReminder} />;

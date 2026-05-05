@@ -3,7 +3,14 @@ import { Card, Button, Group, Box, Title } from '@vkontakte/vkui';
 import { scheduleData, weekDaysOrder, dayNamesRu } from '../../store/scheduleData';
 import './ScheduleTab.scss';
 
-export const ScheduleTab = ({ onRemind }) => {
+export const ScheduleTab = ({ onRemind, checkReminderExists }) => {
+    const handleRemind = (seriesName, eventType, eventTime) => {
+        if (checkReminderExists && checkReminderExists(seriesName, eventType, eventTime)) {
+            return;
+        }
+        onRemind(seriesName, eventType, eventTime);
+    };
+
     const renderScheduleList = () => {
         return weekDaysOrder.map(dayKey => {
             const series = scheduleData[dayKey];
@@ -25,7 +32,7 @@ export const ScheduleTab = ({ onRemind }) => {
                                 size="s"
                                 mode="secondary"
                                 before={<img src="/icons/bell.svg" alt="remind" width={14} height={14} />}
-                                onClick={() => onRemind(series.name, 'новая серия', series.time)}
+                                onClick={() => handleRemind(series.name, 'новая серия', series.time)}
                                 className="schedule-tab__button"
                             >
                                 Напомнить
