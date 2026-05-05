@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import bridge from '@vkontakte/vk-bridge';
 import { View, Panel, Tabbar, TabbarItem, Group } from '@vkontakte/vkui';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Header } from './components/Header/Header';
@@ -8,6 +9,21 @@ import { RemindersTab } from './components/RemindersTab/RemindersTab';
 import { InfoTab } from './components/InfoTab/InfoTab';
 import { useReminders } from './hooks/useReminders';
 import './assets/styles/global.scss';
+
+const requestNotificationPermission = async () => {
+    try {
+        const result = await bridge.send('VKWebAppAllowNotifications');
+        console.log('Разрешение получено:', result);
+        return true;
+    } catch (error) {
+        console.error('Пользователь запретил уведомления:', error);
+        return false;
+    }
+};
+
+bridge.send('VKWebAppInit').then(() => {
+    requestNotificationPermission();
+});
 
 const tabItems = [
     { id: 'today', icon: <img src="/icons/today.svg" alt="today" width={20} height={20} />, label: 'Сегодня' },
@@ -19,7 +35,7 @@ const tabItems = [
 export const App = () => {
     const [activeTab, setActiveTab] = useState('today');
     const { reminders, addReminder, removeReminder, clearAllReminders } = useReminders();
-    
+
     const checkReminderExists = (seriesName, eventType, eventTime) => {
         return reminders.some(reminder => 
             reminder.seriesName === `${seriesName} (${eventType})` ||
