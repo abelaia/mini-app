@@ -61,7 +61,7 @@ app.get('/api/status', (req, res) => {
 });
 
 async function sendVKNotification(userId, seriesName, eventType, eventTime) {
-    console.log(`🔔 Отправка уведомления пользователю ${userId} о "${seriesName}"`);
+    console.log(`Отправка уведомления пользователю ${userId} о "${seriesName}"`);
     
     const message = `🔔 Напоминание!\n\nСериал: ${seriesName}\nСобытие: ${eventType}\nВремя: ${eventTime} (МСК)`;
     

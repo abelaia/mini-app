@@ -73,25 +73,48 @@ export const useReminders = () => {
     }, [saveReminders]);
 
     const showToast = (message) => {
+        const existingToast = document.querySelector('.toast-msg');
+        if (existingToast) {
+            existingToast.remove();
+        }
+        
         const toast = document.createElement('div');
         toast.className = 'toast-msg';
         toast.textContent = message;
+        
         toast.style.cssText = `
             position: fixed;
-            bottom: 80px;
-            left: 20px;
-            right: 20px;
-            background: $bg-toast;
-            color: $text-toast;
-            padding: $space-md;
-            border-radius: $radius-toast;
+            bottom: 90px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--vkui--color_background_float);
+            color: var(--vkui--color_text_primary);
+            padding: 8px 16px;
+            border-radius: 24px;
             text-align: center;
-            font-size: $font-toast;
-            z-index: $z-toast;
-            box-shadow: $shadow-toast;
+            font-size: 13px;
+            font-weight: 500;
+            z-index: 10000;
+            max-width: 90%;
+            white-space: normal;
+            word-break: break-word;
+            box-shadow: var(--vkui--elevation_2);
+            font-family: var(--vkui--font_family_base);
+            border: 1px solid var(--vkui--color_separator_primary);
+            backdrop-filter: blur(20px);
+            animation: fadeInUp 0.2s ease-out;
         `;
+        
         document.body.appendChild(toast);
-        setTimeout(() => toast.remove(), 2500);
+        
+        setTimeout(() => {
+            toast.style.opacity = '0';
+            toast.style.transform = 'translateX(-50%) translateY(10px)';
+            toast.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+            setTimeout(() => {
+                if (toast.parentNode) toast.remove();
+            }, 200);
+        }, 2500);
     };
 
     return {
