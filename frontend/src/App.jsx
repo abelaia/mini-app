@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import bridge from '@vkontakte/vk-bridge';
 import { View, Panel, Tabbar, TabbarItem, Group } from '@vkontakte/vkui';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -26,15 +26,47 @@ bridge.send('VKWebAppInit').then(() => {
 });
 
 const tabItems = [
-    { id: 'today', icon: <img src="/icons/today.svg" alt="today" width={20} height={20} />, label: 'Сегодня' },
-    { id: 'schedule', icon: <img src="/icons/calendar.svg" alt="calendar" width={20} height={20} />, label: 'Расписание' },
-    { id: 'reminders', icon: <img src="/icons/bell.svg" alt="bell" width={20} height={20} />, label: 'Уведомления' },
-    { id: 'info', icon: <img src="/icons/information.svg" alt="info" width={20} height={20} />, label: 'О паблике' },
+    { 
+        id: 'today',
+        icon: <img src="/icons/today.svg" alt="today" width={20} height={20} />, 
+        label: 'Сегодня',
+    },
+    { 
+        id: 'schedule', 
+        icon: <img src="/icons/calendar.svg" alt="calendar" width={20} height={20} />, 
+        label: 'Расписание',
+    },
+    { 
+        id: 'reminders', 
+        icon: <img src="/icons/bell.svg" alt="bell" width={20} height={20} />, 
+        label: 'Уведомления', 
+    },
+    { 
+        id: 'info', 
+        icon: <img src="/icons/information.svg" alt="info" width={20} height={20} />, 
+        label: 'О паблике', 
+    },
 ];
 
 export const App = () => {
     const [activeTab, setActiveTab] = useState('today');
     const { reminders, addReminder, removeReminder, clearAllReminders } = useReminders();
+
+    useEffect(() => {
+        const initializeNotifications = async () => {
+            try {
+                await bridge.send('VKWebAppInit');
+            
+                const result = await bridge.send('VKWebAppAllowNotifications');
+                console.log('Статус уведомлений:', result);
+                
+            } catch (error) {
+                console.log('Уведомления недоступны или запрещены');
+            }
+        };
+
+        initializeNotifications();
+    }, []);
 
     const checkReminderExists = (seriesName, eventType, eventTime) => {
         return reminders.some(reminder => 

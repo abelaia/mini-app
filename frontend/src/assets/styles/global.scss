@@ -61,3 +61,18 @@ body {
     --vkui--color_background_secondary: #fef9ef;
     --vkui--color_background_modal: #ffffff;
 }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+.toast-msg {
+    animation: fadeInUp 0.2s ease-out !important;
+}
