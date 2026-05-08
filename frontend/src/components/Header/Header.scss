@@ -1,9 +1,9 @@
 @import '../../assets/styles/vars';
 
 .header {
-    padding: max($space-36, env(safe-area-inset-top)) $space-16 $space-16;
-    color: $color-white;
     background: $color-burgundy;
+    padding: $space-36 $space-16 $space-16;
+    color: $color-white;
     box-shadow: $shadow-header;
     position: sticky;
     top: 0;
