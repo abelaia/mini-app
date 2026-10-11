@@ -6,3 +6,8 @@ build/
 *.log
 .vscode/
 .idea/
+
+# секреты
+.env
+*.env
+!.env.example
